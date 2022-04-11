@@ -11,11 +11,16 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  mntMenu={
+    idMaestro:0,
+    opcion: 1,
+    estado: 1
+  }
   menu:any = [];
+
   listarMenu(){
-    this.http.GetAll().subscribe(data=>{
-      this.menu = data;
+    this.http.fapiGetParameter('listarMenu',this.mntMenu.opcion+'/'+this.mntMenu.estado).subscribe(data=>{
+      this.menu=data[0];
     })
   }
 }
